@@ -1,19 +1,26 @@
 package sit.int202.onlineshopwebapp.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "Offices")
+import java.util.List;
 
 @Getter
 @Setter
 @ToString
+
+@Entity
+@Table(name = "Offices")
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "OFFICE.FINDALL", query = "select o from Office o"),
+                @NamedQuery(name = "OFFICE.FIND_BY_COUNTRY", query = "select o from Office o where o.country like :country")
+        // :country is wait for value from parameter
+        }
+)
 public class Office {
     @Id
     private String officeCode;
@@ -26,4 +33,7 @@ public class Office {
     @Column(name = "phone")
     private String phoneNumber;
     private String territory;
+
+    @OneToMany(mappedBy = "officeCode")
+    private List<Employee> employeeList;
 }

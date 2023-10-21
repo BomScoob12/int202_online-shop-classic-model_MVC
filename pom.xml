@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>sit.int202</groupId>
-    <artifactId>OnlineShopWebApp-InClass</artifactId>
+    <artifactId>OnlineShopWebApp</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>OnlineShopWebApp</name>
     <packaging>war</packaging>
