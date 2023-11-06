@@ -5,13 +5,14 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Employee;
+import sit.int202.onlineshopwebapp.entities.Environment;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class TestPaging {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("classic-models");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(Environment.UNIT_NAME);
         EntityManager em = emf.createEntityManager();
         Query query = em.createNamedQuery("EMPLOYEE.FINDALL");
         int start = 0;

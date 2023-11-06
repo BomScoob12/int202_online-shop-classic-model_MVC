@@ -3,15 +3,15 @@ package sit.int202.onlineshopwebapp;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Employee;
+import sit.int202.onlineshopwebapp.entities.Environment;
 import sit.int202.onlineshopwebapp.entities.Office;
 
 import java.util.List;
 
 public class TestEntityRelation {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("classic-models");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(Environment.UNIT_NAME);
         System.out.println(emf);
         EntityManager em = emf.createEntityManager();
 

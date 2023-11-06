@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Employee;
+import sit.int202.onlineshopwebapp.entities.Environment;
 import sit.int202.onlineshopwebapp.entities.Office;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Scanner;
 
 public class TestJpa {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("classic-models");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(Environment.UNIT_NAME);
         System.out.println(emf);
         EntityManager em = emf.createEntityManager();
 //        Office office = em.find(Office.class, "8");
@@ -32,6 +33,7 @@ public class TestJpa {
         else System.out.println("Specify office code does not exist!");
 
         Office newOffice = new Office();
+        assert office != null;
         newOffice.setOfficeCode("8");
         newOffice.setAddressLine1(office.getAddressLine1());
         newOffice.setAddressLine2(office.getAddressLine2());
@@ -56,7 +58,7 @@ public class TestJpa {
             Employee newEmp = new Employee();
             newEmp.setId(1001);
             newEmp.setLastname("Johnson");
-            newEmp.setFirstname("Adum");
+            newEmp.setFirstname("Adam");
             newEmp.setEmail("adum@gmail.com");
             newEmp.setExtension("x4611");
             newEmp.setJobTitle("StudentManager");
