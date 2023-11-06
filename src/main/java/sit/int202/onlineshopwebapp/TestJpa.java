@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class TestJpa {
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("classic-models");
         System.out.println(emf);
         EntityManager em = emf.createEntityManager();
 //        Office office = em.find(Office.class, "8");

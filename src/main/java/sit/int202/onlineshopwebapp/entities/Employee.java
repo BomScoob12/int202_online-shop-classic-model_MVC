@@ -28,4 +28,8 @@ public class Employee {
     private String officeCode;
     private Integer reportsTo;
     private String jobTitle;
+    //join table by using relationship.
+    @ManyToOne
+    @JoinColumn(name = "officeCode", insertable = false, updatable = false)
+    private Office office;
 }
