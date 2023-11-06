@@ -19,13 +19,13 @@
     </div>
     <div class="row">
         <c:forEach items="${offices}" var="office">
-            <div class="col-2 border border-secondary p-2 m-2
-            ${office.id == selectedOffice.id ? 'bg-warning' : ''}">
+            <div class="col-2 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
                 <div>
-                    <a href="office-list?officeCode=${office.id}">
+<%--                    set parameter on url (GET METHOD)--%>
+                    <a href="office-list?officeCode=${office.officeCode}">
                             ${office.city}</a>, ${office.country}
                 </div>
-                <div> ${office.phone}</div>
+                <div> ${office.phoneNumber}</div>
             </div>
         </c:forEach>
     </div>

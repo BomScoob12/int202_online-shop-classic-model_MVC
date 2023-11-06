@@ -19,7 +19,7 @@ public class OfficeListServlet extends HttpServlet {
         if (officeCode != null) {
             req.setAttribute("selectedOffice", officeRepository.findOfficeByCode(officeCode));
         }
-        getServletContext().getRequestDispatcher("/office-list.jsp").forward(req, resp);
+        this.getServletContext().getRequestDispatcher("/office-list.jsp").forward(req, resp);
     }
 }
 

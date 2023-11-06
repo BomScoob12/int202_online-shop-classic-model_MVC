@@ -14,8 +14,7 @@
                       value="jdbc:mysql://localhost:3306/classicmodels"/>
             <property name="jakarta.persistence.jdbc.user" value="root"/>
             <property name="jakarta.persistence.jdbc.password" value="BomScoob112547@#"/>
-            <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
         </properties>
     </persistence-unit>
 
