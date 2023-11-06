@@ -8,13 +8,21 @@ import java.util.List;
 
 public class ProductRepository {
     private static int PAGE_SIZE = 10;
+    private EntityManager entityManager;
     public int getDefaultPageSize(){
         return PAGE_SIZE;
     }
 
+    private EntityManager getEntityManager(){
+        if (entityManager == null || !entityManager.isOpen()){
+            entityManager = EntityManagerBuilder.getEntityManager();
+        }
+        return entityManager;
+    }
+
     public List<Product> findAll(int page, int pageSize){
         int startPos = (page - 1) * pageSize;
-        EntityManager entityManager = EntityManagerBuilder.getEntityManager();
+        EntityManager entityManager = getEntityManager();
         Query query = entityManager.createNamedQuery("PRODUCT.FIND_ALL");
         query.setFirstResult(startPos);
         query.setMaxResults(getDefaultPageSize());
@@ -24,8 +32,15 @@ public class ProductRepository {
     }
 
     public int countAll(){
-        EntityManager entityManager = EntityManagerBuilder.getEntityManager();
+        EntityManager entityManager = getEntityManager();
 //        parse to Number and get int value
         return ((Number) entityManager.createNamedQuery("PRODUCT.COUNT").getSingleResult()).intValue();
+    }
+
+    public void close(){
+        EntityManager entityManager = getEntityManager();
+        if(entityManager != null || entityManager.isOpen()){
+            entityManager.close();
+        }
     }
 }

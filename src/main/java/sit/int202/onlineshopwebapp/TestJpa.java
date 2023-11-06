@@ -63,7 +63,7 @@ public class TestJpa {
             newEmp.setExtension("x4611");
             newEmp.setJobTitle("StudentManager");
             newEmp.setReportsTo(1056);
-            newEmp.setOfficeCode("7");
+//            newEmp.getOffice("7");
 
             em.getTransaction().begin();
             em.persist(newEmp);

@@ -1,6 +1,13 @@
 package sit.int202.onlineshopwebapp.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
 
 @Entity
 @Table(name = "products")
@@ -11,7 +18,6 @@ import jakarta.persistence.*;
 })
 public class Product {
     @Id
-    @Column(name = "productCode", nullable = false, length = 15)
     private String productCode;
     private String productName;
     private String productLine;
@@ -20,5 +26,5 @@ public class Product {
     private String productDescription;
     private int quantityInStock;
     private double buyPrice;
-    private double MSRP;
+    private double msrp;
 }
