@@ -1,6 +1,5 @@
 package sit.int202.onlineshopwebapp.repositories;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Office;
@@ -19,6 +18,9 @@ public class OfficeRepository {
 
     public List<Office> findAll(){
         return getEntityManager().createNamedQuery("OFFICE.FINDALL").getResultList();
+    }
+    public List getAllCountry() {
+        return getEntityManager().createNamedQuery("OFFICE.GET_ALL_COUNTRY").getResultList();
     }
 
     public Office findOfficeByCode(String officeCode){
@@ -87,10 +89,9 @@ public class OfficeRepository {
 
     public List<Office> findByCityOrCountry(String cityOrCountry) {
         cityOrCountry = cityOrCountry.toLowerCase()+'%';
-        Query query = getEntityManager().createNamedQuery("Office.FIND_BY_CITY_OR_COUNTRY");
+        Query query = getEntityManager().createNamedQuery("OFFICE.FIND_BY_CITY_OR_COUNTRY");
         query.setParameter("city", cityOrCountry);
         query.setParameter("country", cityOrCountry);
         return query.getResultList();
     }
-
 }

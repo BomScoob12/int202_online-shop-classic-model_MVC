@@ -10,18 +10,38 @@
 <html>
 <head>
     <title>Office Employee List</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
     <div class="row bg-primary">
         <h2>Classic Model Offices ::</h2>
     </div>
+    <div class="row col-first">
+        <form action="083/handleFilter">
+            <label for="filter">Filter Office</label>
+            <select name="filterValue" id="filter">
+                <option value="all" selected>All</option>
+                <optgroup label="Countries">
+                    <c:forEach items="${allCountry}" var="country" varStatus="count">
+                        <option value="${country}">${country}</option>
+                    </c:forEach>
+                </optgroup>
+                <optgroup label="City">
+                    <c:forEach items="${cityFilter}" var="city" varStatus="count">
+                        <option value="${city}">${city}</option>
+                    </c:forEach>
+                </optgroup>
+            </select>
+            <input type="submit" value="Filter">
+        </form>
+    </div>
     <div class="row">
         <c:forEach items="${offices}" var="office">
             <div class="col-2 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
                 <div>
-<%--                    set parameter on url (GET METHOD)--%>
+                        <%--                    set parameter on url (GET METHOD)--%>
                     <a href="office-list?officeCode=${office.officeCode}">
                             ${office.city}</a>, ${office.country}
                 </div>
