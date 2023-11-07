@@ -15,7 +15,7 @@ public class OfficeListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OfficeRepository officeRepository = new OfficeRepository();
         doFilter(req, resp, officeRepository);
-        String officeCode = req.getParameter("selectOfficeCode");
+        String officeCode = req.getParameter("selectOffice");
         if (officeCode != null) {
             req.setAttribute("selectedOffice", officeRepository.findOfficeByCode(officeCode));
         }

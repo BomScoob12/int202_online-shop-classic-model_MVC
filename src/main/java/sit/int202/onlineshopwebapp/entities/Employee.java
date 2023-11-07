@@ -13,9 +13,10 @@ import lombok.ToString;
 @Entity
 @Table(name = "employees")
 
-@NamedQueries(
-        @NamedQuery(name = "EMPLOYEE.FINDALL", query = "select e from Employee e")
-)
+@NamedQueries({
+        @NamedQuery(name = "EMPLOYEE.FIND_ALL", query = "select e from Employee e"),
+        @NamedQuery(name = "EMPLOYEE.FIND_BY_OFFICE_CODE", query = "select e from Employee e where e.officeCode = :officeCode")
+})
 public class Employee {
 
     @Id

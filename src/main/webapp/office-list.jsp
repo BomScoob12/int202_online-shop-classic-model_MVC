@@ -41,7 +41,7 @@
         <c:forEach items="${offices}" var="office">
             <div class="col-2 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
                 <div><%-- set parameter on url (GET METHOD)--%>
-                    <a href="${pageContext.request.requestURI}?officeCode=${office.officeCode}">${office.city}</a>
+                    <a href="${pageContext.request.requestURI}?selectOffice=${office.officeCode}">${office.city}</a>
                         ${office.city}, ${office.country}
                 </div>
                 <div> ${office.phoneNumber}</div>
