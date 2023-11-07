@@ -19,8 +19,11 @@ public class OfficeRepository {
     public List<Office> findAll(){
         return getEntityManager().createNamedQuery("OFFICE.FINDALL").getResultList();
     }
-    public List getAllCountry() {
+    public List<String> getAllCountry() {
         return getEntityManager().createNamedQuery("OFFICE.GET_ALL_COUNTRY").getResultList();
+    }
+    public List<String> getAllCity(){
+        return getEntityManager().createNamedQuery("OFFICE.GET_ALL_CITY").getResultList();
     }
 
     public Office findOfficeByCode(String officeCode){

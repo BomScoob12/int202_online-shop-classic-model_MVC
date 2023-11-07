@@ -14,12 +14,24 @@ public class OfficeListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OfficeRepository officeRepository = new OfficeRepository();
-        req.setAttribute("offices", officeRepository.findAll());
-        String officeCode = req.getParameter("officeCode");
+        doFilter(req, resp, officeRepository);
+        String officeCode = req.getParameter("selectOfficeCode");
         if (officeCode != null) {
             req.setAttribute("selectedOffice", officeRepository.findOfficeByCode(officeCode));
         }
-        this.getServletContext().getRequestDispatcher("/office-list.jsp").forward(req, resp);
+        req.setAttribute("allCountry", officeRepository.getAllCountry());
+        req.setAttribute("allCity", officeRepository.getAllCity());
+        this.getServletContext().getRequestDispatcher("/office-list.jsp").include(req, resp);
+    }
+
+    protected void doFilter(HttpServletRequest req, HttpServletResponse resp, OfficeRepository officeRepository){
+        String filterValue = req.getParameter("filterValue") == null ? "all" : req.getParameter("filterValue");
+        if(filterValue.equalsIgnoreCase("all")){
+            req.setAttribute("offices", officeRepository.findAll());
+        } else {
+            req.setAttribute("offices", officeRepository.findByCityOrCountry(filterValue));
+        }
+        req.setAttribute("selectedFilterValue", filterValue);
     }
 }
 

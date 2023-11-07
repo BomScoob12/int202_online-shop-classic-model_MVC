@@ -19,18 +19,18 @@
         <h2>Classic Model Offices ::</h2>
     </div>
     <div class="row col-first">
-        <form action="083/handleFilter">
+        <form action="office-list" method="get">
             <label for="filter">Filter Office</label>
             <select name="filterValue" id="filter">
-                <option value="all" selected>All</option>
+                <option value="all">All</option>
                 <optgroup label="Countries">
                     <c:forEach items="${allCountry}" var="country" varStatus="count">
-                        <option value="${country}">${country}</option>
+                        <option value="${country}" ${selectedFilterValue == country ? 'selected' : ''}>${country}</option>
                     </c:forEach>
                 </optgroup>
                 <optgroup label="City">
-                    <c:forEach items="${cityFilter}" var="city" varStatus="count">
-                        <option value="${city}">${city}</option>
+                    <c:forEach items="${allCity}" var="city" varStatus="count">
+                        <option value="${city}" ${selectedFilterValue == city ? 'selected' : ''}>${city}</option>
                     </c:forEach>
                 </optgroup>
             </select>
@@ -40,10 +40,9 @@
     <div class="row">
         <c:forEach items="${offices}" var="office">
             <div class="col-2 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
-                <div>
-                        <%--                    set parameter on url (GET METHOD)--%>
-                    <a href="office-list?officeCode=${office.officeCode}">
-                            ${office.city}</a>, ${office.country}
+                <div><%-- set parameter on url (GET METHOD)--%>
+                    <a href="${pageContext.request.requestURI}?officeCode=${office.officeCode}">${office.city}</a>
+                        ${office.city}, ${office.country}
                 </div>
                 <div> ${office.phoneNumber}</div>
             </div>
