@@ -19,7 +19,7 @@
         <h2>Classic Model Offices ::</h2>
     </div>
     <div class="row col-first">
-        <form action="office-list" method="get">
+        <form action="office-list" method="post">
             <label for="filter">Filter Office</label>
             <select name="filterValue" id="filter">
                 <option value="all">All</option>
@@ -48,6 +48,86 @@
             </div>
         </c:forEach>
     </div>
+    <div id="adding-office">
+        <div class="row bg-primary">
+            <h2>Adding new Office</h2>
+        </div>
+        <div class="container">
+            <form action="adding-office" method = "post" class="border p-4 rounded">
+                <div class="row mb-3">
+                    <label for="office-code" class="col-sm-3 col-form-label">Office Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-code" name="newOfficeCode" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-city" class="col-sm-3 col-form-label">City</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-city" name="newOfficeCity" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-phone" class="col-sm-3 col-form-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input type="tel" id="office-phone" name="newOfficePhone" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-addr1" class="col-sm-3 col-form-label">Address line 1</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-addr1" name="newOfficeAddr1" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-addr2" class="col-sm-3 col-form-label">Address line 2</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-addr2" name="newOfficeAddr2" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-state" class="col-sm-3 col-form-label">State</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-state" name="newOfficeState" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-country" class="col-sm-3 col-form-label">Country</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-country" name="newOfficeCountry" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-postalCode" class="col-sm-3 col-form-label">Postal Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-postalCode" name="newOfficePostalCode" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label for="office-territory" class="col-sm-3 col-form-label">Territory</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-territory" name="newOfficeTerritory" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <p>${requestScope.errorAddingOffice}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="remove-office"></div>
 </div>
 </body>
 </html>

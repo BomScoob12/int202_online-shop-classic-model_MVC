@@ -13,6 +13,15 @@ import java.io.IOException;
 public class OfficeListServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doProcess(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doProcess(req, resp);
+    }
+
+    private void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         OfficeRepository officeRepository = new OfficeRepository();
         doFilter(req, resp, officeRepository);
         String officeCode = req.getParameter("selectOffice");

@@ -39,7 +39,7 @@ public class OfficeRepository {
     public boolean insert(Office office){
         try{
             EntityManager entityManager = getEntityManager();
-            entityManager.getTransaction();
+            entityManager.getTransaction().begin();
             entityManager.persist(office);
             entityManager.getTransaction().commit();
         } catch (Exception e){

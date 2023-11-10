@@ -3,7 +3,6 @@ package sit.int202.onlineshopwebapp.repositories;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Employee;
-import sit.int202.onlineshopwebapp.entities.Environment;
 
 import java.util.List;
 

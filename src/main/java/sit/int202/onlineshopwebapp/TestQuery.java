@@ -5,7 +5,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.Query;
 import sit.int202.onlineshopwebapp.entities.Employee;
-import sit.int202.onlineshopwebapp.entities.Environment;
+import sit.int202.onlineshopwebapp.utils.Environment;
 import sit.int202.onlineshopwebapp.entities.Office;
 
 import java.util.List;
