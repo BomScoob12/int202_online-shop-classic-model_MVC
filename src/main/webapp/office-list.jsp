@@ -36,10 +36,10 @@
             </select>
             <input type="submit" value="Filter">
         </form>
-        <form action="adding-office" method="get" class="d-flex flex-row-reverse">
+        <form action="adding-office" method="get" class="d-flex flex-row-reverse m-3">
             <input type="submit" class="btn btn-primary " value="Add new office">
         </form>
-        <form action="remove-office" method="get" class="d-flex flex-row-reverse">
+        <form action="remove-office" method="get" class="d-flex flex-row-reverse m-3">
             <input type="submit" class="btn btn-primary " value="remove office by ID">
         </form>
     </div>

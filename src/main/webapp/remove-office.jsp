@@ -15,8 +15,11 @@
     <form action="remove-office" method="post">
         <label for="removeId"></label> :
         <input type="text" name="removeId" id="removeId">
-        <input type="submit">
+        <input type="submit"> <p>${errorRemove}</p>
     </form>
+    <div>
+        <p>${removeStatus}</p>
+    </div>
 </div>
 </body>
 </html>

@@ -20,13 +20,14 @@ public class RemoveOfficeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String removeParam = req.getParameter("removeId");
-        if(removeParam == null || removeParam.isEmpty()){
+
+        if (removeParam == null || removeParam.isEmpty() || removeParam.equals("0")) {
             req.setAttribute("errorRemove", "Invalid id");
+            req.getRequestDispatcher("remove-office.jsp").forward(req, resp);
         } else {
-            if(removeParam.equals("0")) req.setAttribute("errorRemove", "Invalid id");
             doRemove(removeParam, req, resp);
         }
-        req.getRequestDispatcher("/office-list").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/office-list");
 
     }
 
@@ -38,7 +39,8 @@ public class RemoveOfficeServlet extends HttpServlet {
             officeRepository.close();
         } else {
             System.out.println("unsuccessful");
-            req.setAttribute("removeStatus", "remove unsuccessful");
+            req.setAttribute("removeStatus", "remove unsuccessful because ID its doesn't exists.");
+            req.getRequestDispatcher("remove-office.jsp").forward(req, resp);
             officeRepository.close();
         }
     }
