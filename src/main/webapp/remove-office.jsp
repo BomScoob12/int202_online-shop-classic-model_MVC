@@ -8,9 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Remove office</title>
 </head>
 <body>
-
+<div>
+    <form action="remove-office" method="post">
+        <label for="removeId"></label> :
+        <input type="text" name="removeId" id="removeId">
+        <input type="submit">
+    </form>
+</div>
 </body>
 </html>

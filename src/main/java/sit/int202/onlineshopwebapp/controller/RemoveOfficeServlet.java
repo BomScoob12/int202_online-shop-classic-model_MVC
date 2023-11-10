@@ -1,6 +1,7 @@
 package sit.int202.onlineshopwebapp.controller;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,6 +10,7 @@ import sit.int202.onlineshopwebapp.utils.CheckParam;
 
 import java.io.IOException;
 
+@WebServlet(name = "RemoveOfficeServlet", value = "/remove-office")
 public class RemoveOfficeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

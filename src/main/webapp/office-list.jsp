@@ -40,7 +40,7 @@
             <input type="submit" class="btn btn-primary " value="Add new office">
         </form>
         <form action="remove-office" method="get" class="d-flex flex-row-reverse">
-            <input type="submit" class="btn btn-primary " value="Add new office">
+            <input type="submit" class="btn btn-primary " value="remove office by ID">
         </form>
     </div>
     <div class="row">
