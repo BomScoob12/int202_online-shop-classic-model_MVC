@@ -44,25 +44,19 @@
         </form>
     </div>
     <div class="row">
-        <form action="update-office" method="get" class="container">
-            <div class="row">
-                <c:forEach items="${offices}" var="office" varStatus="status">
-                <div class="col-4 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
+        <form action="update-office" method="get" class="container d-flex flex-wrap">
+            <c:forEach items="${offices}" var="office">
+                <div class="col-4 col-md-3 col-lg-2 border border-secondary p-2 m-2">
                     <div>
                             ${office.city} ${office.country} <br>
                         <p class="text-black">Office code: ${office.officeCode}</p>
                     </div>
                     <div>${office.phoneNumber}</div>
                     <div class="justify-self-end p-2">
-                        <button type="submit" name="editButton" value="${office.officeCode}">Edit</button>
+                        <button type="submit" name="editOffice" value="${office.officeCode}">Edit</button>
                     </div>
                 </div>
-                <c:if test="${(status.index + 1) % 3 == 0}">
-            </div>
-            <div class="row">
-                </c:if>
-                </c:forEach>
-            </div>
+            </c:forEach>
         </form>
     </div>
 </div>
