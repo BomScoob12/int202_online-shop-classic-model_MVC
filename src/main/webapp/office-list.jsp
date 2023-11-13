@@ -44,15 +44,26 @@
         </form>
     </div>
     <div class="row">
-        <c:forEach items="${offices}" var="office">
-            <div class="col-2 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
-                <div><%-- set parameter on url (GET METHOD)--%>
-                    <a href="javascript:loadOffice('${office.officeCode}')">${office.city}</a>
-                        ${office.city}, ${office.country} <br> <p class="text-black bg-warning">Office code : ${office.officeCode}</p>
+        <form action="update-office" method="get" class="container">
+            <div class="row">
+                <c:forEach items="${offices}" var="office" varStatus="status">
+                <div class="col-4 border border-secondary p-2 m-2 ${office.officeCode == selectedOffice.officeCode ? 'bg-warning' : ''}">
+                    <div>
+                            ${office.city} ${office.country} <br>
+                        <p class="text-black">Office code: ${office.officeCode}</p>
+                    </div>
+                    <div>${office.phoneNumber}</div>
+                    <div class="justify-self-end p-2">
+                        <button type="submit" name="editButton" value="${office.officeCode}">Edit</button>
+                    </div>
                 </div>
-                <div> ${office.phoneNumber}</div>
+                <c:if test="${(status.index + 1) % 3 == 0}">
             </div>
-        </c:forEach>
+            <div class="row">
+                </c:if>
+                </c:forEach>
+            </div>
+        </form>
     </div>
 </div>
 </body>

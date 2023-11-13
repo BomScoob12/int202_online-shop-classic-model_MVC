@@ -14,6 +14,8 @@ import java.io.IOException;
 public class RemoveOfficeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        OfficeRepository officeRepository = new OfficeRepository();
+        req.setAttribute("offices",officeRepository.findAll());
         req.getRequestDispatcher("/remove-office.jsp").forward(req, resp);
     }
 
