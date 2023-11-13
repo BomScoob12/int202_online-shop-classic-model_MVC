@@ -26,6 +26,10 @@ public class ProductListServlet extends HttpServlet {
         req.setAttribute("page", page);
         req.setAttribute("pageSize", pageSize);
         req.setAttribute("itemCount", productRepository.countAll());
+
+        int itemCount = productRepository.countAll();
+        int totalPage = itemCount/pageSize + (itemCount % pageSize == 0 ? 0 : 1);
+        req.setAttribute("totalPage", totalPage);
         getServletContext().getRequestDispatcher("/product-list.jsp").forward(req, resp);
     }
 }
