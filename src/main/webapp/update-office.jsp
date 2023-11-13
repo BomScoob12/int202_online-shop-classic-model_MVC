@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: soraw
@@ -13,80 +14,90 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div id="update-office">
-    <div class="row bg-primary">
-        <h2>Adding new Office</h2>
-    </div>
-    <div class="container">
-        <form action="update-office" method = "post" class="border p-4 rounded">
-            <div class="row mb-3">
-                <h2>Office code ${office.officeCode}</h2>
-            </div>
-
-            <div class="row mb-3">
-                <label for="office-city" class="col-sm-3 col-form-label">City</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-city" name="newOfficeCity" value="${office.city}" class="form-control">
+<div class="container">
+    <div id="update-office">
+        <div class="row bg-primary">
+            <h2>Update Office</h2>
+        </div>
+        <div class="container">
+            <form action="update-office" method="post" class="border p-4 rounded">
+                <div class="row mb-3">
+                    <h2>Office code ${officeData.officeCode}</h2>
                 </div>
-            </div>
-
-            <div class="row mb-3">
-                <label for="office-phone" class="col-sm-3 col-form-label">Phone</label>
-                <div class="col-sm-9">
-                    <input type="tel" id="office-phone" name="newOfficePhone" class="form-control">
+                <input type="hidden" id="office-code" name="currentOfficeCode" value="${officeData.officeCode}" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-city" class="col-sm-3 col-form-label">City</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-city" name="newOfficeCity" value="${officeData.city}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-addr1" class="col-sm-3 col-form-label">Address line 1</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-addr1" name="newOfficeAddr1" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-phone" class="col-sm-3 col-form-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input type="tel" id="office-phone" name="newOfficePhone" value="${officeData.phoneNumber}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-addr2" class="col-sm-3 col-form-label">Address line 2</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-addr2" name="newOfficeAddr2" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-addr1" class="col-sm-3 col-form-label">Address line 1</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-addr1" name="newOfficeAddr1" value="${officeData.addressLine1}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-state" class="col-sm-3 col-form-label">State</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-state" name="newOfficeState" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-addr2" class="col-sm-3 col-form-label">Address line 2</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-addr2" name="newOfficeAddr2" value="${officeData.addressLine2}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-country" class="col-sm-3 col-form-label">Country</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-country" name="newOfficeCountry" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-state" class="col-sm-3 col-form-label">State</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-state" name="newOfficeState" value="${officeData.state}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-postalCode" class="col-sm-3 col-form-label">Postal Code</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-postalCode" name="newOfficePostalCode" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-country" class="col-sm-3 col-form-label">Country</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-country" name="newOfficeCountry" value="${officeData.country}"
+                               class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <label for="office-territory" class="col-sm-3 col-form-label">Territory</label>
-                <div class="col-sm-9">
-                    <input type="text" id="office-territory" name="newOfficeTerritory" class="form-control">
+                <div class="row mb-3">
+                    <label for="office-postalCode" class="col-sm-3 col-form-label">Postal Code</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-postalCode" name="newOfficePostalCode"
+                               value="${officeData.postalCode}" class="form-control">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row mb-3">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-9">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <p>${requestScope.errorAddingOffice}</p>
+                <div class="row mb-3">
+                    <label for="office-territory" class="col-sm-3 col-form-label">Territory</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="office-territory" name="newOfficeTerritory"
+                               value="${officeData.territory}" class="form-control">
+                    </div>
                 </div>
-            </div>
-        </form>
+
+                <div class="row mb-3">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <p>${requestScope.errorUpdatingOffice}</p>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 </body>
