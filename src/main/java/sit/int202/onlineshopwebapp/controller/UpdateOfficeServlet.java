@@ -71,7 +71,10 @@ public class UpdateOfficeServlet extends HttpServlet {
         } else {
             System.out.println("error updating. It has null value");
             req.setAttribute("errorUpdatingOffice", "error adding. It has null value");
-            req.getRequestDispatcher("/update-office?editOffice=" + req.getParameter("editOffice")).forward(req, resp);
+            OfficeRepository officeRepository = new OfficeRepository();
+            Office findedOffice = officeRepository.findOfficeByCode(req.getParameter("currentOfficeCode"));
+            req.setAttribute("officeData", findedOffice);
+            req.getRequestDispatcher("/update-office.jsp").forward(req, resp);
         }
         resp.sendRedirect(req.getContextPath() + "/office-list");
     }
