@@ -1,12 +1,10 @@
 package sit.int202.onlineshopwebapp.controller;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import sit.int202.onlineshopwebapp.entities.Product;
-import sit.int202.onlineshopwebapp.repositories.ProductRepository;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+import sit.int202.classicmodelfri.entities.Product;
+import sit.int202.classicmodelfri.repositories.ProductRepository;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,22 +12,25 @@ import java.util.List;
 @WebServlet(name = "ProductListServlet", value = "/product-list")
 public class ProductListServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProductRepository productRepository = new ProductRepository();
-        String pageParam = req.getParameter("page");
-        String pageSizeParam = req.getParameter("pageSize");
-        int page = pageParam == null ? 1 : Integer.parseInt(pageParam);
-        int pageSize = pageSizeParam == null ? productRepository.getDefaultPageSize() : Integer.parseInt(pageSizeParam);
-
-        List<Product> productList = productRepository.findAll(page, pageSize);
-        req.setAttribute("products", productList);
-        req.setAttribute("page", page);
-        req.setAttribute("pageSize", pageSize);
-        req.setAttribute("itemCount", productRepository.countAll());
-
+        String pageParam = request.getParameter("page");
+        String pageSizeParam = request.getParameter("pageSize");
+        int page = pageParam == null ? 1 : Integer.valueOf(pageParam);
+        int pageSize = pageSizeParam == null ? productRepository.getDefaultPageSize() :
+                Integer.valueOf(pageSizeParam);
         int itemCount = productRepository.countAll();
-        int totalPage = itemCount/pageSize + (itemCount % pageSize == 0 ? 0 : 1);
-        req.setAttribute("totalPage", totalPage);
-        getServletContext().getRequestDispatcher("/product-list.jsp").forward(req, resp);
+        int totalPage = itemCount / pageSize + (itemCount % pageSize == 0 ? 0 : 1);
+        List<Product> productList = productRepository.findAll(page, pageSize);
+        request.setAttribute("products", productList);
+        request.setAttribute("page", page);
+        request.setAttribute("pageSize", pageSize);
+        request.setAttribute("totalPage", totalPage);
+        getServletContext().getRequestDispatcher("/product-list.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

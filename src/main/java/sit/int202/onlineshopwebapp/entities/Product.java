@@ -14,7 +14,8 @@ import lombok.ToString;
 
 @NamedQueries({
         @NamedQuery(name = "PRODUCT.FIND_ALL", query = "SELECT p FROM Product p"),
-        @NamedQuery(name = "PRODUCT.COUNT", query = "SELECT count(p) FROM Product p")
+        @NamedQuery(name = "PRODUCT.COUNT", query = "SELECT count(p) FROM Product p"),
+        @NamedQuery(name = "PRODUCT.FIND_BY_CODE", query = "SELECT p FROM Product p WHERE p.productCode = :productCode")
 })
 public class Product {
     @Id
@@ -25,6 +26,7 @@ public class Product {
     private String productVendor;
     private String productDescription;
     private int quantityInStock;
-    private double buyPrice;
+    @Column(name = "buyPrice")
+    private double price;
     private double msrp;
 }

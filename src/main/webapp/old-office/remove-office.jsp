@@ -35,6 +35,7 @@
         <form action="remove-office" method="post">
             <h3>Select and remove office</h3>
             <c:forEach items="${offices}" var="office">
+                <div class="d-inline p-2 m-2">
                 <input type="radio" id="selectedOffice${office.officeCode}" value="${office.officeCode}"
                        name="removeId">
                 <label for="selectedOffice${office.officeCode}" class="row-2 border border-secondary p-2 m-1 div-link">
@@ -42,8 +43,11 @@
                     <div>${office.city}, ${office.country}</div>
                     <div> ${office.phoneNumber} </div>
                 </label>
+                </div>
             </c:forEach>
-            <input type="submit" value="Remove Office">
+            <div class="p-2 m-2">
+                <input type="submit" value="Remove Office">
+            </div>
         </form>
     </div>
 </div>

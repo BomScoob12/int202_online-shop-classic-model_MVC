@@ -31,6 +31,13 @@ public class ProductRepository {
         return productList;
     }
 
+    public Product findProduct(String productCode) {
+        EntityManager entityManager = getEntityManager();
+        Query query = entityManager.createNamedQuery("PRODUCT.FIND_BY_CODE");
+        query.setParameter("productCode", productCode);
+        return (Product) query.getSingleResult();
+    }
+
     public int countAll(){
         EntityManager entityManager = getEntityManager();
 //        parse to Number and get int value

@@ -1,4 +1,4 @@
-package sit.int202.onlineshopwebapp.controller;
+package sit.int202.onlineshopwebapp.controller.oldController;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

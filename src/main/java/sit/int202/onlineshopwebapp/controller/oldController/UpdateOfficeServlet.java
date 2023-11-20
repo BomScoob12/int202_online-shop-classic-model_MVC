@@ -1,4 +1,4 @@
-package sit.int202.onlineshopwebapp.controller;
+package sit.int202.onlineshopwebapp.controller.oldController;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -65,7 +65,7 @@ public class UpdateOfficeServlet extends HttpServlet {
                 officeRepository.close();
             } else {
                 System.out.println("error officeCode");
-                req.setAttribute("errorAddingOffice", "Office code already exists.");
+                req.setAttribute("errorUpdatingOffice", "Error transaction");
                 req.getRequestDispatcher("/update-office.jsp").forward(req, resp);
             }
         } else {
